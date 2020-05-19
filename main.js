@@ -5,10 +5,15 @@ $(document).ready(function() {
         $('#griglia2').append('<div class="quadrato"></div>');
     }//fine ciclo for
 
-// Ad ogni click su un quadratino, parte una richiesta ajax per recuperare un numero random tra 1 e 9.
+// BONUS: generare la griglia in jQuery utilizzando handlebars
 
+// Ad ogni click su un quadratino...
 $('.quadrato').click(function(){
+
+    //definisco il this fuori da ajax perchè non verrbbe letto dentro la funzione
     var quadrato_corrente = $(this);
+
+    //parte una richiesta ajax per recuperare un numero random tra 1 e 9.
     $.ajax({
         'url' : "https://flynn.boolean.careers/exercises/api/random/int",
         'method' : 'GET',
@@ -31,7 +36,5 @@ $('.quadrato').click(function(){
 
 });//fine funzione click
 
-
-    // BONUS: generare la griglia in jQuery utilizzando handlebars
 
 });//fine document ready
