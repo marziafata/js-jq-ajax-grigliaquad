@@ -1,18 +1,18 @@
 $(document).ready(function() {
 
-//creo le variabili che mi serviranno con HANDLEBARS
-var source = $('#entry-template').html();
-var template = Handlebars.compile(source);
-
-var source2 = $('#entry-template2').html();
-var template2 = Handlebars.compile(source2);
-
 // Create una griglia di 36 quadratini (6x6).
     for (var i = 0; i < 36; i++) {
         $('#griglia2').append('<div class="quadrato"></div>');
     }//fine ciclo for
 
 // BONUS: generare la griglia in jQuery utilizzando handlebars
+
+//creo le variabili che mi serviranno con HANDLEBARS
+var source = $('#entry-template').html();
+var template = Handlebars.compile(source);
+
+var source2 = $('#entry-template2').html();
+var template2 = Handlebars.compile(source2);
 
 //genero la griglia
 var context = {
@@ -59,8 +59,11 @@ $('.quadrato').click(function(){
                             quadrato_corrente.text(numero).addClass('verde');
                         }//fine if else
 
-                    }//fine function(data)
-
+                    }, //fine function(data) di success
+        'error' : function() {
+            alert('qualcosa è andato storto...');
+        }//fine function di error
+        
     });//fine ajax
 
 });//fine funzione click
