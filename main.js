@@ -37,7 +37,7 @@ var nuovo_quadrato = template2(context2);
     }//fine ciclo for
 
 // Ad ogni click su un quadratino...
-$('.quadrato').click(function(){
+$('.quadrato').one('click', function(){
 
     //salvo il riferimento al quadrato su cui ho cliccato
     var that = $(this);
@@ -51,13 +51,16 @@ $('.quadrato').click(function(){
                         var numero = data.response;
                         console.log(numero);
 
-                        // Se il numero restituito dall'api è <= 5, scrivo il numero e il quadrato su cui l'utente ha cliccato diventa giallo;
+                        // Se il numero restituito dall'api è <= 5, il quadrato su cui l'utente ha cliccato diventa giallo;
                         if (numero <= 5) {
-                            that.text(numero).addClass('giallo')
-                        //se invece il numero restituito dall'api è > 5, scrivo il numero e il quadrato su cui l'utente ha cliccato diventa verde.
+                            that.addClass('giallo')
+                        //se invece il numero restituito dall'api è > 5, il quadrato su cui l'utente ha cliccato diventa verde.
                         } else {
-                            that.text(numero).addClass('verde');
+                            that.addClass('verde');
                         }//fine if else
+
+                        //In entrambi i casi, andiamo ad inserire nel quadrato il numero restituito dall'api.
+                        that.text(numero);
 
                     }, //fine function(data) di success
         'error' : function() {
